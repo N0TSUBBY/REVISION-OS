@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Revision OS</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div id="desktop" class="desktop">
+      <div id="window-layer" class="window-layer"></div>
+      <div id="zen-mode" class="zen-mode hidden" aria-hidden="true">
+        <div id="zen-overlay" class="zen-overlay"></div>
+        <time id="zen-clock" class="zen-clock">00:00:00</time>
+      </div>
+    </div>
+
+    <nav id="taskbar" class="taskbar" aria-label="Taskbar"></nav>
+
+    <menu id="context-menu" class="context-menu hidden" aria-label="Context menu"></menu>
+
+    <div id="custom-cursor" class="custom-cursor" aria-hidden="true"></div>
+
+    <script src="https://sdk.scdn.co/spotify-player.js"></script>
+    <script src="./script.js"></script>
+  </body>
+</html>
