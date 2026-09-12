@@ -684,7 +684,10 @@ function browserModule(mountNode) {
 
   const navigate = (value, push = true) => {
     const normalized = normalizeUrl(value);
-    if (!normalized) return;
+    if (!normalized) {
+      status.textContent = 'Please enter a valid http(s) URL.';
+      return;
+    }
 
     urlInput.value = normalized;
     frame.classList.remove('hidden');
@@ -997,7 +1000,14 @@ function resetLayout() {
 function normalizeUrl(value) {
   const trimmed = String(value || '').trim();
   if (!trimmed) return '';
-  return /^https?:\/\//i.test(trimmed) ? trimmed : `https://${trimmed}`;
+  const candidate = /^https?:\/\//i.test(trimmed) ? trimmed : `https://${trimmed}`;
+  try {
+    const parsed = new URL(candidate);
+    if (!['http:', 'https:'].includes(parsed.protocol)) return '';
+    return parsed.toString();
+  } catch {
+    return '';
+  }
 }
 
 function updateZenMode(enabled) {
